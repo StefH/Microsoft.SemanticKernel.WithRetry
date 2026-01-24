@@ -17,14 +17,23 @@ Rate limit reached for gpt-4o in organization org-xxxxxxxxxxxxxxxxxxxxxxxx on to
 
 ### Before
 ```csharp
-var result = await kernel.InvokePromptAsync("Which tools are currently registered?");
-Console.WriteLine($"\n\nTools:\n{result}");
+var builder = Kernel.CreateBuilder();
+
+builder.Services.AddOpenAIChatCompletion(
+    serviceId: "openai",
+    modelId: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!
+);
 ```
 
 ### After
 ```csharp
-var result = await kernel.InvokePromptAsync("Which tools are currently registered?").WithRetryAsync(logger, cts.Token);
-Console.WriteLine($"\n\nTools:\n{result}");
+var builder = Kernel.CreateBuilder();
+
+builder.Services.AddOpenAIChatCompletionWithRetry(
+    modelId: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!
+);
 ```
 
 ---
