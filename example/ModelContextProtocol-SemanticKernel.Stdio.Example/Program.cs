@@ -7,7 +7,7 @@ using ModelContextProtocol.SemanticKernel.Extensions;
 
 var currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
 
-var cts = new CancellationTokenSource();
+using var cts = new CancellationTokenSource();
 
 var builder = Kernel.CreateBuilder();
 builder.Services.AddLogging(c => c.AddDebug().SetMinimumLevel(LogLevel.Trace));
@@ -41,8 +41,6 @@ var executionSettings = new OpenAIPromptExecutionSettings
     FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
 };
 
-var logger = kernel.Services.GetRequiredService<ILoggerFactory>().CreateLogger("Program");
-
 var result = await kernel.InvokePromptAsync("Which tools are currently registered? And what are the functions?", new(executionSettings));
 Console.WriteLine($"\n\nTools:\n{result}");
 
@@ -66,4 +64,3 @@ var resultGitHub = await kernel.InvokePromptAsync(promptGitHub, new(executionSet
 Console.WriteLine($"\n\n{promptGitHub}\n{resultGitHub}");
 
 await cts.CancelAsync();
-cts.Dispose();
