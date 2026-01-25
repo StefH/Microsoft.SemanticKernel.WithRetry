@@ -13,7 +13,7 @@ HTTP 429 (tokens: rate_limit_exceeded)
 Rate limit reached for gpt-4o in organization org-xxxxxxxxxxxxxxxxxxxxxxxx on tokens per min (TPM): Limit 30000, Used 27855, Requested 5405. Please try again in 6.52s. Visit https://platform.openai.com/account/rate-limits to learn more.
 ```
 
-## Usage
+## Usage for `OpenAI`
 
 ### Before
 ```csharp
@@ -33,6 +33,30 @@ var builder = Kernel.CreateBuilder();
 builder.Services.AddOpenAIChatCompletionWithRetry(
     modelId: "gpt-4o",
     apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!
+);
+```
+
+## Usage for `Azure OpenAI`
+
+### Before
+```csharp
+var builder = Kernel.CreateBuilder();
+
+builder.Services.AddAzureOpenAIChatCompletion(
+    deploymentName: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!,
+    endpoint: Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!
+);
+```
+
+### After
+```csharp
+var builder = Kernel.CreateBuilder();
+
+builder.Services.AddAzureOpenAIChatCompletionWithRetry(
+    deploymentName: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!,
+    endpoint: Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!
 );
 ```
 

@@ -12,9 +12,15 @@ using var cts = new CancellationTokenSource();
 var builder = Kernel.CreateBuilder();
 builder.Services.AddLogging(c => c.AddDebug().SetMinimumLevel(LogLevel.Trace));
 
+// Add this to use OpenAI service with retry logic
 builder.Services.AddOpenAIChatCompletionWithRetry(
     modelId: "gpt-4o",
     apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!
+);
+builder.Services.AddAzureOpenAIChatCompletion(
+    deploymentName: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!,
+    endpoint: Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!
 );
 
 var kernel = builder.Build();

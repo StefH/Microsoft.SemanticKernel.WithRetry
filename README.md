@@ -17,7 +17,7 @@ Rate limit reached for gpt-4o in organization org-xxxxxxxxxxxxxxxxxxxxxxxx on to
 [![NuGet Badge](https://img.shields.io/nuget/v/Stef.Microsoft.SemanticKernel.WithRetry)](https://www.nuget.org/packages/Stef.Microsoft.SemanticKernel.WithRetry)<br>
 
 
-## Usage
+## Usage for `OpenAI`
 
 ### Before
 ```csharp
@@ -40,6 +40,29 @@ builder.Services.AddOpenAIChatCompletionWithRetry(
 );
 ```
 
+## Usage for `Azure OpenAI`
+
+### Before
+```csharp
+var builder = Kernel.CreateBuilder();
+
+builder.Services.AddAzureOpenAIChatCompletion(
+    deploymentName: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!,
+    endpoint: Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!
+);
+```
+
+### After
+```csharp
+var builder = Kernel.CreateBuilder();
+
+builder.Services.AddAzureOpenAIChatCompletionWithRetry(
+    deploymentName: "gpt-4o",
+    apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!,
+    endpoint: Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!
+);
+```
 
 ---
 
