@@ -17,11 +17,6 @@ builder.Services.AddOpenAIChatCompletionWithRetry(
     modelId: "gpt-4o",
     apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!
 );
-builder.Services.AddAzureOpenAIChatCompletion(
-    deploymentName: "gpt-4o",
-    apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!,
-    endpoint: Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!
-);
 
 var kernel = builder.Build();
 
