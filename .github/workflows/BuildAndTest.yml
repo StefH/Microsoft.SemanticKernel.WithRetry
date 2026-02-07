@@ -19,8 +19,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # - name: 'Build'
-    #   run: dotnet build './examples/Presidio.SDK.ConsoleApp/Presidio.SDK.ConsoleApp.csproj' -c Release
-
-    # - name: 'Test'
-    #   run: dotnet test './tests/Presidio.SDK.Tests/Presidio.SDK.Tests.csproj' -c Release
+    - name: 'Build'
+      run: dotnet build './src/Microsoft.SemanticKernel.WithRetry/Microsoft.SemanticKernel.WithRetry.csproj' -c Release
