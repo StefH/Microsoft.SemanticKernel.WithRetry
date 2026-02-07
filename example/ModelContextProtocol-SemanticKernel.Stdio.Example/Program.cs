@@ -15,7 +15,13 @@ builder.Services.AddLogging(c => c.AddDebug().SetMinimumLevel(LogLevel.Trace));
 // Add this to use OpenAI service with retry logic
 builder.Services.AddOpenAIChatCompletionWithRetry(
     modelId: "gpt-4o",
-    apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!
+    apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!,
+    httpClientBuilderAction: httpClientBuilder =>
+    {
+        httpClientBuilder.ConfigureSanitizedLogging(o =>
+            o.HeadersReplacements.Add("(?i)^Authorization$", "...")
+        );
+    }
 );
 
 var kernel = builder.Build();
