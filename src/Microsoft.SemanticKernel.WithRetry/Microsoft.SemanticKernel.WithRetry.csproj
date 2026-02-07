@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Version>0.0.1-preview-01</Version>
-    <PackageId>Stef.Microsoft.SemanticKernel.Retry</PackageId>
+    <PackageId>Stef.Microsoft.SemanticKernel.WithRetry</PackageId>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

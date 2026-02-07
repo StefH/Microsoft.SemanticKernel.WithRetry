@@ -1,4 +1,4 @@
-# Microsoft.SemanticKernel.WithRetry
+# Stef.Microsoft.SemanticKernel.WithRetry
 This is an extension for the [Microsoft.SemanticKernel](https://github.com/microsoft/semantic-kernel/tree/main/dotnet) to handle 'Rate limit reached' exceptions using retries.
 
 ## Info
