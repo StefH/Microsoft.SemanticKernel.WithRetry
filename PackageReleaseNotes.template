@@ -3,4 +3,4 @@
 - #{{Number}} {{Title}}{{#if Labels}} [{{join Labels ", "}}]{{/if}}
 {{/each}}
 
-The full release notes can be found here: https://github.com/StefH/Microsoft.SemanticKernel.WithRetry/blob/main/src/OpenAI.Polly/ReleaseNotes.md
+The full release notes can be found here: https://github.com/StefH/Microsoft.SemanticKernel.WithRetry/blob/init/ReleaseNotes.md

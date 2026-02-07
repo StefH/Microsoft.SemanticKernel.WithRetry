@@ -12,7 +12,7 @@
     <Authors>Stef Heyenrath</Authors>
     <PackageIcon>icon.png</PackageIcon>
     <Product>Microsoft SemanticKernel Retry Extensions</Product>
-    <Description>'WithRetryAsync' extension for Microsoft SemanticKernel to handle 'Rate limit reached' exceptions using retries.</Description>
+    <Description>Contains extension methods to register OpenAIChatCompletion from Microsoft SemanticKernel to handle 'rate_limit_exceeded' exceptions using retries.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/StefH/Microsoft.SemanticKernel.WithRetry</PackageProjectUrl>
     <RepositoryUrl>https://github.com/StefH/Microsoft.SemanticKernel.WithRetry</RepositoryUrl>
